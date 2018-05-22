@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Knouckout.js testing</title>
+</head>
+<body>
+
+    <p>Let's create a simple template using Knockout.js and create a button action</p>
+
+    <div>
+        <label for="input" data-bind="text:labelText">Apply a label from knockout binding</label>
+        <br/>
+        <input type="text" data-bind="value:inputValue" name="input" id="input" value="" />
+        <br/>
+        <input type="submit" value="send" data-bind="click:buttonAction" />
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-debug.js"></script>
+    <script>
+
+        var ViewModel = function () {
+            var self = this;
+            self.labelText = "My text label";
+            self.inputValue = "My input value";
+            self.buttonAction = function () {
+                console.log("clicou");
+            }
+        }
+
+        ko.applyBindings(new ViewModel());
+
+    </script>
+</body>
+</html>
