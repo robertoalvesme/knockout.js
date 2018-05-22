@@ -15,7 +15,7 @@
         <br/>
 
         <ul data-bind="foreach:listItem">
-            <li data-bind="text:$data"></li>
+            <li><span data-bind="text:$data.name"></span> / <span data-bind="text:$data.age"></span> </li>
         </ul>
 
         <input type="submit" value="send" data-bind="click:buttonAction" />
@@ -37,7 +37,13 @@
 
             // Criando um observable que vai investigar mudança entre os dados
             self.inputValue = ko.observable("My input value");
-            self.listItem = ko.observableArray(["item1","item2","item3"])
+            self.listItem = ko.observableArray([
+                {"name":"João", "age": 23},
+                {"name":"Maria", "age": 24},
+                {"name":"Josh", "age": 25},
+                {"name":"Cleu", "age": 26},
+                {"name":"Fernand", "age": 27}
+            ])
 
             self.buttonAction = function () {
                 console.log("clicou");
