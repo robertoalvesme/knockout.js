@@ -21,16 +21,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-debug.js"></script>
     <script>
 
+        /**
+         * Criando uma viewModel
+         * @constructor
+         */
         var ViewModel = function () {
             var self = this;
+            // Dados estáticos
             self.labelText = "My text label";
-            self.inputValue = "My input value";
+
+            // Criando um observable que vai investigar mudança entre os dados
+            self.inputValue = ko.observable("My input value");
+
+
             self.buttonAction = function () {
                 console.log("clicou");
             }
         }
 
-        ko.applyBindings(new ViewModel());
+        // Criando uma vm
+        var vm = new ViewModel()
+
+        // Aplicar o vm no ko
+        ko.applyBindings(vm);
+
+        // Fazendo teste no console para trocar o valor do input
+        // vm.inputValue("outro valor")
 
     </script>
 </body>
