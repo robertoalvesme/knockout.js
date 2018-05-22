@@ -37,6 +37,12 @@
 
             // Criando um observable que vai investigar mudança entre os dados
             self.inputValue = ko.observable("My input value");
+
+            var subscribe = self.inputValue.subscribe(function(){
+                alert("Value changed for " + self.inputValue() );
+                subscribe.dispose();
+            });
+
             self.listItem = ko.observableArray([
                 {"name":"João", "age": 23},
                 {"name":"Maria", "age": 24},
