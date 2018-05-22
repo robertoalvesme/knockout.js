@@ -33,17 +33,17 @@
         var ViewModel = function () {
             var self = this;
             // Dados estáticos
-            self.labelText = "My text label";
+            self.labelText = "Type your name";
 
             // Criando um observable que vai investigar mudança entre os dados
-            self.inputValue = ko.observable("My input value");
+            self.inputValue = ko.observable("Rick");
 
 
             // Criando um subscriber e dipose quando ativado
-            var subscribe = self.inputValue.subscribe(function(){
-                alert("Value changed for " + self.inputValue() );
+            var subscribe = self.inputValue.subscribe(function( olderValue ){
+                alert("You've change de previous value: " + olderValue);
                 subscribe.dispose();
-            });
+            },null, "beforeChange");
 
             // configurando o acessor desse subscribe para 500 ms
             self.inputValue.extend({ "rateLimit" : 500 });
